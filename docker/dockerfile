@@ -11,3 +11,5 @@ RUN echo "deb http://download.opensuse.org/repositories/network:/messaging:/zero
 RUN wget https://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/Debian_9.0/Release.key -O- | sudo apt-key add
 RUN sudo apt install -y libzmq3-dev
 RUN opam install base merlin jupyter
+ENV PATH=$PATH:~/.local/bin
+ENTRYPOINT ["python", "/home/opam/.local/bin/jupyter", "notebook", "--ip=0.0.0.0"]
