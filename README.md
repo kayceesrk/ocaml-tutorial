@@ -61,3 +61,11 @@ $ jupyter notebook
 ```
 
 This should open up a Jupyter session in our browser.
+
+## Acknowledgements
+
+The exercises are generously borrowed from other OCaml tutorials
+
+* JaneStreet [learn OCaml
+  workshop](https://github.com/janestreet/learn-ocaml-workshop)
+* OCaml Labs [2048 tutorial](https://github.com/ocamllabs/2048-tutorial)
