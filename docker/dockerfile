@@ -14,6 +14,9 @@ RUN sudo mkdir /usr/local/share/jupyter
 RUN sudo chmod a+x /usr/local/share/jupyter
 RUN python /home/opam/.local/bin/jupyter kernelspec install --name ocaml-jupyter "$(opam config var share)/jupyter" --user
 
+RUN opam -y depext lwt_ssl
+RUN opam install github-unix
+
 COPY run.sh run.sh
 RUN sudo chmod 755 run.sh
 CMD ./run.sh
