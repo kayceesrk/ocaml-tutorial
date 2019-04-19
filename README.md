@@ -39,13 +39,13 @@ $ sh <(curl -sL https://raw.githubusercontent.com/ocaml/opam/master/shell/instal
 $ opam init
 ```
 
-The detailed installation instructions are [here](https://opam.ocaml.org/doc/Install.html).
-
-Next install OCaml Jupyter Kernel:
+The detailed installation instructions are
+[here](https://opam.ocaml.org/doc/Install.html). Then install required packages:
 
 ```bash
 $ pip install jupyter
-$ opam install jupyter
+RUN opam -y depext lwt_ssl
+RUN opam install -y lwt_ssl merlin utop user-setup github-unix jupyter
 $ jupyter kernelspec install --name ocaml-jupyter "$(opam config var share)/jupyter"
 ```
 
@@ -66,6 +66,5 @@ This should open up a Jupyter session in our browser.
 
 The exercises are generously borrowed from other OCaml tutorials
 
-* JaneStreet [learn OCaml
-  workshop](https://github.com/janestreet/learn-ocaml-workshop)
+* OCaml Labs [learn OCaml workshop](https://github.com/ocamllabs/learn-ocaml-workshop)
 * OCaml Labs [2048 tutorial](https://github.com/ocamllabs/2048-tutorial)

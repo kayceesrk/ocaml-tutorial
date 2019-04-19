@@ -6,17 +6,15 @@ RUN wget https://download.opensuse.org/repositories/network:/messaging:/zeromq:/
 RUN sudo apt install -y libzmq3-dev
 
 RUN pip install jupyter
-RUN opam remote add upstream https://opam.ocaml.org && \
+RUN opam remote add upstream https://github.com/ocaml/opam-repository.git && \
     opam update && opam upgrade
-RUN opam install base merlin jupyter
+RUN opam -y depext lwt_ssl
+RUN opam install -y lwt_ssl merlin utop user-setup github-unix jupyter
 
 RUN sudo mkdir /usr/local/share/jupyter
 RUN sudo chmod a+x /usr/local/share/jupyter
 RUN python /home/opam/.local/bin/jupyter kernelspec install --name ocaml-jupyter "$(opam config var share)/jupyter" --user
 
-RUN opam -y depext lwt_ssl
-RUN opam install github-unix
-
-COPY run.sh run.sh
-RUN sudo chmod 755 run.sh
-CMD ./run.sh
+COPY .ocamlinit /home/opam/.ocamlinit
+WORKDIR /notebooks
+ENV PATH $PATH:~/.local/bin
