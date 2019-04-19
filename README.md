@@ -15,22 +15,16 @@ everywhere that docker works.
 $ git clone https://github.com/kayceesrk/ocaml-tutorial
 $ cd ocaml-tutorial/notebooks
 $ docker run -p 8888:8888 -v `pwd`:/notebooks kayceesrk/ocaml-tutorial-q2_2019:latest
+$ jupyter notebook --ip=0.0.0.0
 ```
 
 Copy and paste the URL displayed into your browser. If you save the changes to
-the notebook, they are saved locally. In order to terminate the container, do
-
-```bash
-$ docker kill `docker ps -l -q`
-```
-
-Assuming this is the latest container.
+the notebook, they are saved locally. 
 
 ### Setup locally
 
 These instructions should work on Linux and MacOS. OPAM is OCaml package
 manager. On windows, use a Linux VM. The short installation instruction is:
-
 
 First install the OCaml compiler 4.07.1 and the OPAM package manager. 
 
@@ -44,8 +38,8 @@ The detailed installation instructions are
 
 ```bash
 $ pip install jupyter
-RUN opam -y depext lwt_ssl
-RUN opam install -y lwt_ssl merlin utop user-setup github-unix jupyter
+$ opam -y depext lwt_ssl
+$ opam install -y lwt_ssl merlin utop user-setup github-unix jupyter
 $ jupyter kernelspec install --name ocaml-jupyter "$(opam config var share)/jupyter"
 ```
 
