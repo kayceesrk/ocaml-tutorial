@@ -14,7 +14,7 @@ everywhere that docker works.
 ```bash
 $ git clone https://github.com/kayceesrk/ocaml-tutorial
 $ cd ocaml-tutorial/notebooks
-$ docker run -p 8888:8888 -v `pwd`:/notebooks kayceesrk/ocaml-tutorial-q2_2019:latest
+$ docker run -it -p 8888:8888 -v `pwd`:/notebooks kayceesrk/ocaml-tutorial-q2_2019:latest
 $ jupyter notebook --ip=0.0.0.0
 ```
 
